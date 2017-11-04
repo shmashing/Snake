@@ -72,8 +72,7 @@ public class Snake
       snakeSegments[i].directionVector[1] = 0;
     }
 
-    StdDraw.setScale(-30, 30);
-
+    StdDraw.setScale(-35, 35);
     StdDraw.clear(StdDraw.BLACK);
 
     for(int i = 0; i < snakeSegments.length; i ++)
@@ -82,6 +81,8 @@ public class Snake
     }
 
     StdDraw.filledSquare(0, 0, 13);
+    StdDraw.setPenColor(StdDraw.WHITE);
+    StdDraw.text(0,30,"Welcome! Use wasd to move the snake up, left, down, and right, respectively");
     StdDraw.show();
 
     System.out.println("Welcome! Use wasd to move the snake up, left, down, and right, respectively.");
@@ -129,6 +130,8 @@ public class Snake
  
       StdDraw.setPenColor(StdDraw.WHITE);
       StdDraw.filledSquare(0, 0, 28);
+      StdDraw.setPenColor(StdDraw.WHITE);
+      StdDraw.text(0,-32, "Score: " + foodCount);
 
       for(int i = 0; i < snakeSegments.length; i ++)
       {
@@ -145,6 +148,9 @@ public class Snake
         {
           if(checkForCollision(snakeSegments))
           {
+            StdDraw.setPenColor(StdDraw.RED);
+            StdDraw.text(0,0,"GAME OVER");
+            StdDraw.show();
             System.out.println("The snake crashed! GAME OVER");
             break;
           }
