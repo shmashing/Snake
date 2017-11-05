@@ -6,13 +6,13 @@ public class Snake
 
     StdDraw.line(position[0] - 0.5, position[1], position[0] + 0.5, position[1]);
     StdDraw.line(position[0], position[1] + 0.5, position[0], position[1] - 0.5);
-    StdDraw.line(position[0] - .5, position[1] + 0.5, position[0] + 0.5, position[1] - 0.5);
-    StdDraw.line(position[0] - .5, position[1] - 0.5, position[0] + 0.5, position[1] + 0.5);
+    StdDraw.line(position[0] - .35, position[1] + 0.35, position[0] + 0.35, position[1] - 0.35);
+    StdDraw.line(position[0] - .35, position[1] - 0.35, position[0] + 0.35, position[1] + 0.35);
   }
 
-  public static SnakeSegment[] addNewSegment(SnakeSegment[] segments, int newSize, int x, int y)
+  public static SnakeSegment[] addNewSegment(SnakeSegment[] segments, int x, int y)
   {
-    SnakeSegment[] copyArray = new SnakeSegment[newSize];
+    SnakeSegment[] copyArray = new SnakeSegment[segments.length+1];
     
     for(int j = 0; j < newSize - 1; j ++)
     {

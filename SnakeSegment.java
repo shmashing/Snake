@@ -2,11 +2,8 @@ public class SnakeSegment
 {
 
   public int[] position = new int[2];
-
   public int[] directionVector = new int[2];
-
   public boolean isHead;
-
   public boolean collision = false;
 
   public void changeDirection(int[] newDirectionVector)
