@@ -13,7 +13,7 @@ public class Snake
   public static SnakeSegment[] addNewSegment(SnakeSegment[] segments, int x, int y)
   {
     SnakeSegment[] copyArray = new SnakeSegment[segments.length+1];
-    
+    int newSize = segments.length+1;
     for(int j = 0; j < newSize - 1; j ++)
     {
       copyArray[j] = segments[j];
@@ -63,6 +63,7 @@ public class Snake
     }
     
     snakeSegments[0].isHead = true;
+    // snakeSegments[0].changeDirection(UP);
 
     for(int i = 0; i < snakeSegments.length; i ++)
     {
@@ -82,16 +83,24 @@ public class Snake
 
     StdDraw.filledSquare(0, 0, 13);
     StdDraw.setPenColor(StdDraw.WHITE);
-    StdDraw.text(0,30,"Welcome! Use wasd to move the snake up, left, down, and right, respectively");
-    StdDraw.show();
-
-    System.out.println("Welcome! Use wasd to move the snake up, left, down, and right, respectively.");
 
     int[] foodPosition = new int[2];
 
     for(int i = 0; i < 2; i ++)
     {
       foodPosition[i] = 27 - (int) Math.round(54 * Math.random());
+    }
+    while(true){
+      StdDraw.setPenColor(StdDraw.WHITE);
+      StdDraw.text(0,10,"Welcome!");
+      StdDraw.text(0,5,"Use wasd to move the snake up, left, down,"); 
+      StdDraw.text(0,0, "and right, respectively");
+      StdDraw.text(0,-10, "press any key to play");
+      StdDraw.show();
+
+      if(StdDraw.hasNextKeyTyped()){
+        break;
+      }
     }
 
     while(true)
@@ -130,7 +139,6 @@ public class Snake
  
       StdDraw.setPenColor(StdDraw.WHITE);
       StdDraw.filledSquare(0, 0, 28);
-      StdDraw.setPenColor(StdDraw.WHITE);
       StdDraw.text(0,-32, "Score: " + foodCount);
 
       for(int i = 0; i < snakeSegments.length; i ++)
@@ -151,7 +159,6 @@ public class Snake
             StdDraw.setPenColor(StdDraw.RED);
             StdDraw.text(0,0,"GAME OVER");
             StdDraw.show();
-            System.out.println("The snake crashed! GAME OVER");
             break;
           }
         }
@@ -160,10 +167,8 @@ public class Snake
 
       if((snakeSegments[0].position[0] == foodPosition[0]) && (snakeSegments[0].position[1] == foodPosition[1]))
       {
-
         foodCount ++;
-
-        snakeSegments = addNewSegment(snakeSegments, snakeSegments.length + 1, foodPosition[0], foodPosition[1]);
+        snakeSegments = addNewSegment(snakeSegments, foodPosition[0], foodPosition[1]);
 
         for(int i = 0; i < 2; i ++)
         {
@@ -187,9 +192,6 @@ public class Snake
           gameSpeed -= 1;
         }
       }
-
     }
-
-    System.out.println("Score: " + foodCount);  
   }
 }

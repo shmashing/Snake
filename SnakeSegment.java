@@ -10,7 +10,6 @@ public class SnakeSegment
   {
     if(((newDirectionVector[0] + directionVector[0]) != 0) ||
        ((newDirectionVector[1] + directionVector[1]) != 0))
-
     {
       directionVector = newDirectionVector;
     }
